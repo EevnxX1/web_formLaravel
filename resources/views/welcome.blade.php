@@ -21,7 +21,7 @@
                 </div>
             </aside>
             <main class="w-[45%] p-8 py-20">
-                <h1 class="text-3xl font-bold">Sign In</h1>
+                <h1 class="text-3xl font-bold">Sign Up</h1>
                 <form method="POST" class="mt-5 w-full flex flex-col gap-y-3">
                     <label for="name" class="relative">
                         <p class="teks-input">Your Name</p>
@@ -70,7 +70,7 @@
                         <input type="checkbox" name="remember" id="" class="ml-1 scale-125 accent-green-900">
                         <p>Remember Me</p>
                     </div>
-                    <button type="submit" class="w-full bg-green-800 text-white py-2 rounded-full">Sign In Account</button>
+                    <button type="submit" class="w-full bg-green-800 text-white py-2 rounded-full">Sign Up Account</button>
                 </form>
                 <div class="flex items-center mt-3"><span class="border border-slate-300 w-[50%] block"></span><p class="px-1">Or</p><span class="border-b-2 border-slate-300 w-[50%] block"></span></div>
                 <div class="flex gap-x-3 mt-3">
@@ -78,13 +78,13 @@
                         <div class="text-2xl">
                             <i class="fa-brands fa-facebook"></i>
                         </div>
-                        <p class="text-sm text-slate-500">Sign in with Facebook</p>
+                        <p class="text-sm text-slate-500">Sign Up with Facebook</p>
                     </a>
                     <a href="" class="rounded-full border-2 border-slate-300 flex items-center gap-x-2 py-1 px-2 w-max">
                         <div class="text-2xl">
                             <i class="fa-brands fa-github"></i>
                         </div>
-                        <p class="text-sm text-slate-500">Sign in with Github</p>
+                        <p class="text-sm text-slate-500">Sign Up with Github</p>
                     </a>
                 </div>
             </main>
