@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input-form {
+    @apply w-[91%] text-sm h-9 outline-none px-2 bg-transparent;
+}
+.teks-input {
+    @apply text-sm ml-1 text-gray-500 mb-1;
+}
+.bungkus-input {
+    @apply relative bg-slate-200 rounded-xl w-full h-max;
+}
+.danger-input {
+    @apply text-sm italic text-red-500 ml-1;
+}
+.checklist {
+    @apply absolute top-[50%] -translate-y-1/2 right-2 px-1 text-white bg-green-600 rounded-full;
+}
+.silang {
+    @apply absolute top-[50%] -translate-y-1/2 right-2 px-[6px] text-white bg-red-500 rounded-full;
+}
