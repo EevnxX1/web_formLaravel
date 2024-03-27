@@ -7,19 +7,57 @@
 </head>
 <body>
     <div class="bg-slate-400 h-dvh w-dvw flex justify-center items-center">
-        <section class="container bg-white flex h-[670px] rounded-3xl overflow-hidden">
-            <aside class="rounded-r-3xl w-[55%] flex justify-center items-center bg-cover bg-no-repeat" style="background-image: url('gambar/6166719.jpg')">
+        <section class="relative w-[800px] bg-white flex justify-between h-[670px] rounded-3xl overflow-hidden">
+            <aside id="layer-control" class="absolute left-0 z-50 h-full rounded-3xl w-[55%] flex justify-center items-center bg-cover bg-no-repeat" style="background-image: url('gambar/6166719.jpg')">
                 <div class="p-8 bg-gradient-to-tr from-lime-200 to-slate-400/50 to-60% backdrop-blur-md w-[80%] h-[85%] rounded-xl flex flex-col gap-y-10">
-                    <button class="text-white text-5xl bg-slate-300 py-1 px-7 rounded-full w-max">
+                    <label id="slideBtn" form="button-geser" class="cursor-pointer text-white text-5xl bg-slate-300 py-1 px-7 rounded-full w-max">
+                        <input type="checkbox" class="hidden" id="button-geser">
                         <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                    </label>
                     <div class="text-slate-200 flex flex-col gap-y-4">
                         <p>Hi, Welcome!</p>
-                        <h1 class="font-bold text-4xl">Let's Get Started</h1>
+                        <h1 class="font-bold text-4xl" id="teks-layer">Let's Get Sign In</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi nulla debitis illo quo est ullam!</p>
                     </div>
                 </div>
             </aside>
+            <main class="w-[45%] p-8 py-20">
+                <h1 class="text-3xl font-bold mb-5">Sign In</h1>
+                <p class="text-gray-500">Silahkan Login Jika Anda Sudah Melakukan Sign Up</p>
+                <form method="POST" class="mt-8 w-full flex flex-col gap-y-8">
+                    @csrf
+                    <label for="login_email" class="relative w-full h-10 bg-inputBg rounded-md cursor-text">
+                        <input type="text" name="login_email" id="login_email" class="bg-transparent w-full text-sm h-full rounded-md pl-8 outline-validColor border-2 focus:border-validColor valid:border-validColor peer transition-all ease-linear duration-100" required>
+                        <p class="absolute top-1/2 -translate-y-1/2 left-8 text-teksInput peer-focus:bg-gradient-to-t from-inputBg to-white p-1 peer-valid:top-0 peer-valid:left-7 peer-valid:text-sm peer-valid:text-validColor peer-valid:bg-gradient-to-t peer-focus:top-0 peer-focus:left-7 peer-focus:text-sm peer-focus:text-validColor transition-all ease-linear duration-100">Email</p>
+                        <div class="absolute top-1/2 -translate-y-1/2 left-3 text-base peer-focus:text-validColor peer-valid:text-validColor">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </label>
+                    <label for="login_password" class="relative w-full h-10 bg-inputBg rounded-md cursor-text">
+                        <input type="password" name="login_password" id="login_password" class="bg-transparent w-full text-sm h-full rounded-md pl-8 outline-validColor border-2 focus:border-validColor valid:border-validColor peer transition-all ease-linear duration-100" required>
+                        <p class="absolute top-1/2 -translate-y-1/2 left-8 text-teksInput peer-focus:bg-gradient-to-t from-inputBg to-white p-1 peer-valid:top-0 peer-valid:left-7 peer-valid:text-sm peer-valid:text-validColor peer-valid:bg-gradient-to-t peer-focus:top-0 peer-focus:left-7 peer-focus:text-sm peer-focus:text-validColor transition-all ease-linear duration-100">Password</p>
+                        <div class="absolute top-1/2 -translate-y-1/2 left-3 text-base peer-focus:text-validColor peer-valid:text-validColor">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                    </label>
+                    <button type="submit" class="w-full bg-green-800 text-white py-2 rounded-full">Sign In Account</button>
+                </form>
+                <div class="flex items-center mt-3"><span class="border border-slate-300 w-[50%] block"></span><p class="px-1">Or</p><span class="border-b-2 border-slate-300 w-[50%] block"></span></div>
+                <div class="flex gap-x-3 mt-3">
+                    <a href="" class="rounded-full border-2 border-slate-300 flex items-center gap-x-2 py-1 px-2 w-max">
+                        <div class="text-2xl">
+                            <i class="fa-brands fa-facebook"></i>
+                        </div>
+                        <p class="text-sm text-slate-500">Sign Up with Facebook</p>
+                    </a>
+                    <a href="" class="rounded-full border-2 border-slate-300 flex items-center gap-x-2 py-1 px-2 w-max">
+                        <div class="text-2xl">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <p class="text-sm text-slate-500">Sign Up with Github</p>
+                    </a>
+                </div>
+            </main>
             <main class="w-[45%] p-8 py-20">
                 <h1 class="text-3xl font-bold">Sign Up</h1>
                 <form method="POST" class="mt-5 w-full flex flex-col gap-y-3">
@@ -176,6 +214,47 @@
             })
             // End Cek Apakah semua input memenuhi syarat jika iya lakukan submit jika tidak munculkan pesan
         }
+        // Membuat fungsi geser layar
+        const btnGeser = document.getElementById('button-geser')
+        btnGeser.addEventListener('click', (e) => {
+            const layer = document.getElementById('layer-control')
+            const btnSlide = document.getElementById('slideBtn')
+            const textLayer = document.getElementById('teks-layer')
+            if(btnGeser.checked) {
+                layer.classList.add('animate-slideLayout')
+                btnSlide.classList.add('animate-rotateBtn')
+                textLayer.classList.add('animate-textOpacity')
+                setTimeout(() => {
+                    layer.classList.remove('animate-slideLayout')
+                    btnSlide.classList.remove('animate-rotateBtn')
+                    layer.classList.remove('left-0')
+                    layer.classList.add('left-[45.5%]')
+                    btnSlide.classList.add('rotate-180')
+                    btnSlide.classList.add('translate-x-[190px]')
+                    textLayer.classList.remove('animate-textOpacity')
+                }, 1000);
+                setTimeout(() => {
+                    textLayer.innerHTML = "Let's Get Sign Up"
+                }, 500);
+            } else {
+                layer.classList.add('animate-slideLayoutR')
+                btnSlide.classList.add('animate-rotateBtnR')
+                textLayer.classList.add('animate-textOpacity')
+                setTimeout(() => {
+                    layer.classList.remove('animate-slideLayoutR')
+                    btnSlide.classList.remove('animate-rotateBtnR')
+                    layer.classList.remove('left-[45.5%]')
+                    layer.classList.add('left-0')
+                    btnSlide.classList.remove('rotate-180')
+                    btnSlide.classList.remove('translate-x-[190px]')
+                    textLayer.classList.remove('animate-textOpacity')
+                }, 1000);
+                setTimeout(() => {
+                    textLayer.innerHTML = "Let's Get Sign In"
+                }, 500);
+            }
+        })
+        // End Membuat fungsi geser layar
     </script>
 </body>
 </html>
